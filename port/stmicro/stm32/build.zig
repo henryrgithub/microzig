@@ -31,11 +31,15 @@ pub fn init(dep: *std.Build.Dependency) Self {
     return .{
         .chips = chips,
         .boards = .{
-            .stm32l476discovery = chips.STM32L476VG.derive(.{
+            .stm32f303nucleo = chips.STM32F303RE.derive(.{
                 .board = .{
-                    .name = "STM32L476DISCOVERY",
-                    .root_source_file = b.path("src/boards/STM32L476DISCOVERY.zig"),
+                    .name = "STM32F303NUCLEO",
+                    .root_source_file = b.path("src/boards/STM32F303NUCLEO.zig"),
                 },
+                .hal = microzig.HardwareAbstractionLayer{
+                    .root_source_file = b.path("src/hals/STM32F303.zig"),
+                },
+                .stack = .{ .ram_region_name = "CCMRAM" },
             }),
             .stm32f3discovery = chips.STM32F303VC.derive(.{
                 .board = .{
@@ -46,6 +50,12 @@ pub fn init(dep: *std.Build.Dependency) Self {
                     .root_source_file = b.path("src/hals/STM32F303.zig"),
                 },
                 .stack = .{ .ram_region_name = "CCMRAM" },
+            }),
+            .stm32l476discovery = chips.STM32L476VG.derive(.{
+                .board = .{
+                    .name = "STM32L476DISCOVERY",
+                    .root_source_file = b.path("src/boards/STM32L476DISCOVERY.zig"),
+                },
             }),
             .stm32f4discovery = chips.STM32F407VG.derive(.{
                 .board = .{
@@ -63,12 +73,6 @@ pub fn init(dep: *std.Build.Dependency) Self {
                 .board = .{
                     .name = "STM32F429IDISCOVERY",
                     .root_source_file = b.path("src/boards/STM32F429IDISCOVERY.zig"),
-                },
-            }),
-            .stm32f303nucleo = chips.STM32F303RE.derive(.{
-                .board = .{
-                    .name = "STM32F303NUCLEO",
-                    .root_source_file = b.path("src/boards/STM32F303NUCLEO.zig"),
                 },
             }),
         },
