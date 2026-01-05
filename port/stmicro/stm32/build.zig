@@ -11,6 +11,7 @@ boards: struct {
     stm32f4discovery: *const microzig.Target,
     stm3240geval: *const microzig.Target,
     stm32f429idiscovery: *const microzig.Target,
+    stm32f303nucleo: *const microzig.Target,
 },
 
 pub fn init(dep: *std.Build.Dependency) Self {
@@ -62,6 +63,12 @@ pub fn init(dep: *std.Build.Dependency) Self {
                 .board = .{
                     .name = "STM32F429IDISCOVERY",
                     .root_source_file = b.path("src/boards/STM32F429IDISCOVERY.zig"),
+                },
+            }),
+            .stm32f303nucleo = chips.STM32F303RE.derive(.{
+                .board = .{
+                    .name = "STM32F303NUCLEO",
+                    .root_source_file = b.path("src/boards/STM32F303NUCLEO.zig"),
                 },
             }),
         },
