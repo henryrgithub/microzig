@@ -21,7 +21,7 @@ pub fn main() !void {
                 pins.led,
             };
             break :res .{ pins, all_leds };
-        } else if (comptime microzig.config.board_name != null and std.mem.eql(u8, microzig.config.board_name.?, "STM32F3NUCLEO")) {
+        } else if (comptime microzig.config.board_name != null and std.mem.eql(u8, microzig.config.board_name.?, "STM32F303NUCLEO")) {
             const pins = board.leds_config.apply();
             const all_leds = .{
                 pins.LD2,

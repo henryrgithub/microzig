@@ -6,6 +6,7 @@ const MicroBuild = microzig.MicroBuild(.{
 });
 
 pub fn build(b: *std.Build) void {
+//    const optimize = b.standardOptimizeOption(.{});
     const optimize = b.standardOptimizeOption(.{});
     const maybe_example = b.option([]const u8, "example", "only build matching examples");
 
