@@ -41,6 +41,12 @@ pub fn init(dep: *std.Build.Dependency) Self {
                 },
                 .stack = .{ .ram_region_name = "CCMRAM" },
             }),
+            .stm32l476discovery = chips.STM32L476VG.derive(.{
+                .board = .{
+                    .name = "STM32L476DISCOVERY",
+                    .root_source_file = b.path("src/boards/STM32L476DISCOVERY.zig"),
+                },
+            }),
             .stm32f3discovery = chips.STM32F303VC.derive(.{
                 .board = .{
                     .name = "STM32F3DISCOVERY",
@@ -50,12 +56,6 @@ pub fn init(dep: *std.Build.Dependency) Self {
                     .root_source_file = b.path("src/hals/STM32F303.zig"),
                 },
                 .stack = .{ .ram_region_name = "CCMRAM" },
-            }),
-            .stm32l476discovery = chips.STM32L476VG.derive(.{
-                .board = .{
-                    .name = "STM32L476DISCOVERY",
-                    .root_source_file = b.path("src/boards/STM32L476DISCOVERY.zig"),
-                },
             }),
             .stm32f4discovery = chips.STM32F407VG.derive(.{
                 .board = .{
